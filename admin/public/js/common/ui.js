@@ -241,5 +241,22 @@ jQuery(function($) {
 			$btn.click();
 		}, 1);
 	});
-	
+
+	setTimeout(function () {
+		$('.save-and-return').on('click',function(e) {
+			e.preventDefault()
+
+			$('#redirect').val('list')
+
+			$('.save-buttonek').trigger('click')
+		})
+		$('.save-and-preview').on('click',function(e) {
+			e.preventDefault()
+
+			$('#redirect').val('preview')
+
+			$('.save-buttonek').trigger('click')
+		})
+	},500)
+
 });

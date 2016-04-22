@@ -10,10 +10,12 @@ var View = React.createClass({
 	displayName: 'ItemView',
 	
 	getInitialState: function() {
+		console.log(Keystone.list)
 		return {
 			createIsVisible: false,
 			list: Keystone.list,
-			itemData: null
+			itemData: null,
+			preview: Keystone.list.path == 'repairs'&& true || false
 		};
 	},
 
@@ -54,7 +56,7 @@ var View = React.createClass({
 			<div>
 				{this.renderCreateForm()}
 				<Header list={this.state.list} data={this.state.itemData} toggleCreate={this.toggleCreate} />
-				<EditForm list={this.state.list} data={this.state.itemData} />
+				<EditForm list={this.state.list} preview={this.state.preview} data={this.state.itemData} />
 			</div>
 		);
 	}

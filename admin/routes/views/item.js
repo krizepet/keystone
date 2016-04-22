@@ -90,6 +90,9 @@ exports = module.exports = function(req, res) {
 				if (req.body.redirect === 'list') {
 					return res.redirect('/keystone/' + req.list.path);
 				}
+				if (req.body.redirect === 'preview') {
+					return res.redirect('/keystone/' + req.list.path + '/preview/' + item.id);
+				}
 
 				return res.redirect('/keystone/' + req.list.path + '/' + item.id);
 

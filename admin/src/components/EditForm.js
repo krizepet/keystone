@@ -176,6 +176,7 @@ var EditForm = React.createClass({
 		
 		if (!this.props.list.noedit) {
 			toolbar.save = <button type="submit" className="btn btn-save">Save</button>;
+			toolbar.saveAndRedirect = <button onClick={(e)=> {e.preventDefault()}} className="btn btn-save save-and-return">Save and return</button>;
 			// TODO: Confirm: Use React & Modal
 			toolbar.reset = <a href={'/keystone/' + this.props.list.path + '/' + this.props.data.id} className="btn btn-link btn-cancel" data-confirm="Are you sure you want to reset your changes?">reset changes</a>;
 		}
@@ -198,6 +199,7 @@ var EditForm = React.createClass({
 		return (
 			<form method="post" encType="multipart/form-data" className="item-details">
 				<input type="hidden" name="action" value="updateItem" />
+				<input type="hidden" id="redirect" name="redirect" value="no" />
 				<input type="hidden" name={Keystone.csrf.key} value={Keystone.csrf.value} />
 				{this.renderNameField()}
 				{this.renderTrackingMeta()}

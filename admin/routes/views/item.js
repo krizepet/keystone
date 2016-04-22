@@ -86,7 +86,13 @@ exports = module.exports = function(req, res) {
 					return renderView();
 				}
 				req.flash('success', 'Your changes have been saved.');
+
+				if (req.body.redirect === 'list') {
+					return res.redirect('/keystone/' + req.list.path);
+				}
+
 				return res.redirect('/keystone/' + req.list.path + '/' + item.id);
+
 			});
 
 
